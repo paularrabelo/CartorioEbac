@@ -75,16 +75,19 @@ int deleta(){	//função responsável por remover os usuários
 	printf("Digite o CPF do usuário a ser deletado: ");
 	scanf("%s", cpf);
 	
+	//remove(cpf);
 	
 	FILE *file;
-	file = fopen(cpf, "r");
+	file = fopen(cpf, "r");	
+
 	
-	if (file == NULL){	//se o arquivo for NULO, ou seja, não encontrado, responde para o usuário que não foi encontrado
-		printf("CPF do usuário não encontrado.\n");
-		system("pause");
-	}else {
+	if (file){
+		fclose(file);	
 		remove(cpf);	//remove o cpf solicitado e manda uma mensagem para o usuário
 		printf("O usuário foi excluido com sucesso!\n");
+		system("pause");
+	}else {
+		printf("CPF do usuário não encontrado.\n");	//se o arquivo for NULO, ou seja, não encontrado, responde para o usuário que não foi encontrado
 		system("pause");
 	}
 	
@@ -106,7 +109,8 @@ int main(){		//função principal do sistema *MENU*
 	printf("Escolha a opção desejada no menu: \n\n");
 	printf("\t1- Registrar nomes\n");
 	printf("\t2- Consultar nomes\n");
-	printf("\t3- Deletar nomes\n\n");
+	printf("\t3- Deletar nomes\n");
+	printf("\t4- Sair do sistema\n\n");
 	printf("Opção: ");	//final do menu
 	
 	scanf("%d", &opcao);	//armazenando a escolha do usuário
@@ -126,6 +130,12 @@ int main(){		//função principal do sistema *MENU*
 		
 		case 3:
 		deleta();
+		break;
+		
+		case 4:
+		printf("Obrigado por utilizar o sistema!\n");
+		printf("\n\n\nEsse sistema foi desenvolvido por Paula Rabelo, aluna de TI da EBAC.\n");
+		return 0;
 		break;
 		
 		default:
