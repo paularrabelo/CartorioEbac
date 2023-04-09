@@ -97,52 +97,65 @@ int main(){		//função principal do sistema *MENU*
 	
 	int opcao = 0;	//definição da variavel de escolha
 	int laco = 1;
+	char senha[10]="a";
+	int comparacao;
 	
-	for (laco = 1 ;laco =1 ;){
-	
-	system("cls");
-	
-	setlocale(LC_ALL, "Portuguese"); //Opção de colocar a lingua portuguesa.
-	
-	//Menu do cartório:
+	setlocale(LC_ALL, "Portuguese");//Opção de colocar a lingua portuguesa.
 	printf("\t--- Cartório da Paula ---\n\n");	//inicio do menu
-	printf("Escolha a opção desejada no menu: \n\n");
-	printf("\t1- Registrar nomes\n");
-	printf("\t2- Consultar nomes\n");
-	printf("\t3- Deletar nomes\n");
-	printf("\t4- Sair do sistema\n\n");
-	printf("Opção: ");	//final do menu
+	printf("\nLogin de administrador!\nDigite sua senha: ");
+	scanf("%s", senha);
 	
-	scanf("%d", &opcao);	//armazenando a escolha do usuário
+	comparacao = strcmp(senha, "admin");
 	
-	system("cls");	//limpando a tela
+	if(comparacao == 0){
+		
+		for (laco = 1 ;laco =1 ;){
+	
+		system("cls");
 	
 	
-	switch(opcao){	//inicio da seleção
+		//Menu do cartório:
+		printf("\t--- Cartório da Paula ---\n\n");	//inicio do menu
+		printf("Escolha a opção desejada no menu: \n\n");
+		printf("\t1- Registrar nomes\n");
+		printf("\t2- Consultar nomes\n");
+		printf("\t3- Deletar nomes\n");
+		printf("\t4- Sair do sistema\n\n");
+		printf("Opção: ");	//final do menu
+	
+		scanf("%d", &opcao);	//armazenando a escolha do usuário
+	
+		system("cls");	//limpando a tela
+	
+	
+		switch(opcao){	//inicio da seleção
 		
-		case 1:
-		registro();
-		break;
+			case 1:
+			registro();
+			break;
 		
-		case 2:
-		consulta();
-		break;
+			case 2:
+			consulta();
+			break;
 		
-		case 3:
-		deleta();
-		break;
+			case 3:
+			deleta();
+			break;
 		
-		case 4:
-		printf("Obrigado por utilizar o sistema!\n");
-		printf("\n\n\nEsse sistema foi desenvolvido por Paula Rabelo, aluna de TI da EBAC.\n");
-		return 0;
-		break;
+			case 4:
+			printf("\nObrigado por utilizar o sistema!\n");
+			printf("\n\n\nEsse sistema foi desenvolvido por Paula Rabelo, aluna de TI da EBAC.\n");
+			return 0;
+			break;
 		
-		default:
-		printf("Opcão inválida.\n");
-		system("pause");
-		break;	//final da seleção
-			
-	}
+			default:
+			printf("Opcão inválida.\n");
+			system("pause");
+			break;	//final da seleção
+		}
+		}
+	}else {
+		system("cls");
+		printf("\nSenha incorreta!\n");
 	}
 }
